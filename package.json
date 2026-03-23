@@ -1,0 +1,129 @@
+{
+  "name": "@codenameryuu/adonis-lucid-soft-deletes",
+  "description": "Addon for soft deletes Adonis JS 7 Lucid ORM",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "main": "./build/index.js",
+  "type": "module",
+  "files": [
+    "build",
+    "!build/bin",
+    "!build/tests"
+  ],
+  "exports": {
+    ".": "./build/index.js",
+    "./types/*": "./build/src/types/*.js",
+    "./bindings": "./build/src/bindings/model_query_builder.js",
+    "./provider": "./build/providers/lucid_soft_deletes_provider.js"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "clean": "del-cli build",
+    "precompile": "npm run lint && npm run clean",
+    "compile": "tsup-node && tsc --emitDeclarationOnly --declaration",
+    "build": "npm run compile",
+    "quick:test": "NODE_DEBUG=\"adonis-lucid-soft-deletes\" node --enable-source-maps --loader=ts-node/esm bin/test.ts",
+    "pretest": "npm run lint",
+    "test": "c8 npm run quick:test",
+    "typecheck": "tsc --noEmit",
+    "version": "npm run build",
+    "prepublishOnly": "npm run build",
+    "release": "np"
+  },
+  "devDependencies": {
+    "@adonisjs/assembler": "^7.7.0",
+    "@adonisjs/core": "^7.0.0",
+    "@adonisjs/eslint-config": "^3.0.0",
+    "@adonisjs/lucid": "^22.0.0",
+    "@adonisjs/prettier-config": "^1.4.5",
+    "@adonisjs/tsconfig": "^2.0.0",
+    "@japa/assert": "^4.2.0",
+    "@japa/expect-type": "^2.0.4",
+    "@japa/file-system": "^3.0.0",
+    "@japa/runner": "^5.3.0",
+    "@japa/snapshot": "^2.0.5",
+    "@swc/core": "^1.6.7",
+    "@types/lodash": "^4.17.6",
+    "@types/luxon": "^3.4.2",
+    "@types/node": "^25.5.0",
+    "c8": "^9.1.0",
+    "copyfiles": "^2.4.1",
+    "del-cli": "^5.1.0",
+    "eslint": "^10.0.2",
+    "knex": "^3.1.0",
+    "lodash": "^4.17.23",
+    "luxon": "^3.4.4",
+    "prettier": "^3.8.1",
+    "reflect-metadata": "^0.2.2",
+    "sqlite3": "^5.1.7",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.3",
+    "youch": "^4.1.0"
+  },
+  "peerDependencies": {
+    "@adonisjs/core": "^7.0.0",
+    "@adonisjs/lucid": "^22.0.0"
+  },
+  "author": "LookinGit",
+  "license": "MIT",
+  "homepage": "https://github.com/lookinlab/adonis-lucid-soft-deletes#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/lookinlab/adonis-lucid-soft-deletes.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lookinlab/adonis-lucid-soft-deletes/issues"
+  },
+  "keywords": [
+    "adonisjs",
+    "adonisjs-lucid",
+    "adonisjs-lucid-soft-deletes",
+    "adonisjs-soft-deletes",
+    "adonis",
+    "adonis-lucid",
+    "adonis-lucid-soft-deletes",
+    "adonis-soft-deletes"
+  ],
+  "eslintConfig": {
+    "extends": "@adonisjs/eslint-config/package"
+  },
+  "prettier": "@adonisjs/prettier-config",
+  "publishConfig": {
+    "access": "public",
+    "tag": "latest"
+  },
+  "np": {
+    "message": "chore(release): %s",
+    "tag": "latest",
+    "branch": "master",
+    "anyBranch": false
+  },
+  "c8": {
+    "reporter": [
+      "text",
+      "html"
+    ],
+    "exclude": [
+      "tests/**",
+      "bin/**"
+    ]
+  },
+  "tsup": {
+    "entry": [
+      "./index.ts",
+      "./src/types/*.ts",
+      "./src/bindings/model_query_builder.ts",
+      "./providers/lucid_soft_deletes_provider.ts"
+    ],
+    "outDir": "./build",
+    "clean": true,
+    "format": "esm",
+    "dts": false,
+    "sourcemap": true,
+    "target": "esnext"
+  }
+}

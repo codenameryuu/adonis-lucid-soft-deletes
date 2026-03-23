@@ -1,0 +1,15 @@
+node_modules
+coverage
+.DS_Store
+.DS_STORE
+npm-debug.log
+.idea
+.vscode/
+*.sublime-project
+*.sublime-workspace
+*.log
+build
+dist
+shrinkwrap.yaml
+test-helpers/tmp
+yarn.lock
