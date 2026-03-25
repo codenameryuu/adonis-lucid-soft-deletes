@@ -62,9 +62,9 @@
     "knex": "^3.1.0",
     "lodash": "^4.17.23",
     "luxon": "^3.4.4",
+    "np": "^11.0.2",
     "prettier": "^3.8.1",
     "reflect-metadata": "^0.2.2",
-    "sqlite3": "^5.1.7",
     "ts-node": "^10.9.2",
     "tsup": "^8.1.0",
     "typescript": "^5.5.3",
@@ -88,10 +88,13 @@
     "access": "public",
     "tag": "latest"
   },
-  "eslintConfig": {
-    "extends": "@adonisjs/eslint-config/package"
-  },
   "prettier": "@adonisjs/prettier-config",
+  "np": {
+    "message": "chore(release): %s",
+    "tag": "latest",
+    "branch": "main",
+    "anyBranch": false
+  },
   "c8": {
     "reporter": [
       "text",
