@@ -1,16 +1,6 @@
-# Adonis Lucid Soft Deletes
+# @codenameryuu/adonis-lucid-soft-deletes
 
-> Works with AdonisJS v6
-
-Docs for [AdonisJS v5](https://github.com/lookinlab/adonis-lucid-soft-deletes/tree/v1)
-
-[![npm-image]][npm-url] [![license-image]][license-url] [![typescript-image]][typescript-url]
-
-This addon adds the functionality to soft deletes Lucid Models through the `deleted_at` flag
-
-> Works with `@adonisjs/lucid@^21.1.*`
-
-Sometimes use the `deleted_at` flag for soft deletes could be not good way. More [about it](https://brandur.org/soft-deletion)
+This addon adds the functionality to soft deletes Lucid Models through the `deleted_at` flag in AdonisJS 7.
 
 ## Introduction
 
@@ -24,39 +14,32 @@ as Luxon / DateTime instance.
 
 ## Installation
 
-Install it using `npm`, `yarn` or `pnpm`.
+Install it using `npm` , `yarn` or `pnpm` .
 
 ```bash
-# npm
-npm i adonis-lucid-soft-deletes
-
-# yarn
-yarn add adonis-lucid-soft-deletes
-
-# pnpm
-pnpm add adonis-lucid-soft-deletes
+yarn add @codenameryuu/adonis-lucid-soft-deletes
 ```
 
-After install call `configure`:
+After install call `configure` :
 
 ```bash
-node ace configure adonis-lucid-soft-deletes
+node ace configure @codenameryuu/adonis-lucid-soft-deletes
 ```
 
 ## Usage
 
 Make sure to register the provider inside `adonisrc.ts` file.
 
-```ts
+```typescript
 providers: [
   // ...
-  () => import('adonis-lucid-soft-deletes/provider'),
+  () => import('@codenameryuu/adonis-lucid-soft-deletes/provider'),
 ]
 ```
 
 You should add the `deleted_at` column to your database tables for models with soft deletes.
 
-```ts
+```typescript
 // migrations/1234566666_users.ts
 import { BaseSchema } from '@adonisjs/lucid/schema'
 
@@ -75,7 +58,7 @@ export default class Users extends BaseSchema {
 
 ### Applying Soft Deletes to a Model
 
-```ts
+```typescript
 import { compose } from '@adonisjs/core/helpers'
 import { SoftDeletes } from 'adonis-lucid-soft-deletes'
 
@@ -84,10 +67,10 @@ export default class User extends compose(BaseModel, SoftDeletes) {
 }
 ```
 
-Now, when you call the `.delete()` method on the model, the `deleted_at` (`customDeletedAtColumn`) column
+Now, when you call the `.delete()` method on the model, the `deleted_at` ( `customDeletedAtColumn` ) column
 will be set to the current date and time. However, the model's database record will be left in the table.
 
-```ts
+```typescript
 import type { HttpContext } from '@adonisjs/core/http'
 import User from '#models/user'
 
@@ -113,7 +96,7 @@ will automatically be excluded from all query results.
 
 To determine if a given model instance has been soft deleted, you may use the `.trashed` getter:
 
-```ts
+```typescript
 import type { HttpContext } from '@adonisjs/core/http'
 import User from '#models/user'
 
@@ -134,7 +117,7 @@ export default class UsersController {
 
 ### Set custom column name for `deletedAt`
 
-```ts
+```typescript
 import { compose } from '@adonisjs/core/helpers'
 import { SoftDeletes } from 'adonis-lucid-soft-deletes'
 
@@ -150,7 +133,8 @@ export default class User extends compose(BaseModel, SoftDeletes) {
 
 To restore a soft deleted model, you may call the `.restore()` method on a model instance.
 Also, method `.restore()` exists after methods `.withTrashed()` and `.onlyTrashed()`
-The `restore` method will set the model's `deleted_at` column to `null`:
+
+The `restore` method will set the model's `deleted_at` column to `null` :
 
 ```ts
 import type { HttpContext } from '@adonisjs/core/http'
@@ -180,7 +164,7 @@ export default class TrashUsersController {
 Sometimes you may need to truly remove a model from your database.
 You may use the `.forceDelete()` method to permanently remove a soft deleted model from the database table:
 
-```ts
+```typescript
 import type { HttpContext } from '@adonisjs/core/http'
 import User from '#models/user'
 
@@ -204,7 +188,7 @@ As noted above, soft deleted models will automatically be excluded from query re
 However, you may force soft deleted models to be included in a query's results
 by calling the `.withTrashed()` method on the model:
 
-```ts
+```typescript
 import type { HttpContext } from '@adonisjs/core/http'
 import User from '#models/user'
 
@@ -233,7 +217,7 @@ export default class UsersController {
 
 The `.onlyTrashed()` method will retrieve **only** soft deleted models:
 
-```ts
+```typescript
 import type { HttpContext } from '@adonisjs/core/http'
 import User from '#models/user'
 
@@ -250,17 +234,10 @@ export default class TrashUsersController {
 
 ### Soft Deletes methods
 
-Methods `.withTrashed()`, `.onlyTrashed()` and `.restore()` also available
+Methods `.withTrashed()` , `.onlyTrashed()` and `.restore()` also available
 in ModelQueryBuilder for models with soft delete, example:
 
-```ts
+```typescript
 await User.query().withTrashed().exec()
 await User.query().onlyTrashed().restore()
 ```
-
-[npm-image]: https://img.shields.io/npm/v/adonis-lucid-soft-deletes?logo=npm&style=for-the-badge
-[npm-url]: https://www.npmjs.com/package/adonis-lucid-soft-deletes
-[license-image]: https://img.shields.io/npm/l/adonis-lucid-soft-deletes?style=for-the-badge&color=blueviolet
-[license-url]: https://github.com/lookinlab/adonis-lucid-soft-deletes/blob/develop/LICENSE.md
-[typescript-image]: https://img.shields.io/npm/types/adonis-lucid-soft-deletes?color=294E80&label=%20&logo=typescript&style=for-the-badge
-[typescript-url]: https://github.com/lookinlab

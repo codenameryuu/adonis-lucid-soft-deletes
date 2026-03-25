@@ -1,7 +1,7 @@
 {
   "name": "@codenameryuu/adonis-lucid-soft-deletes",
   "description": "Addon for soft deletes Adonis JS 7 Lucid ORM",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "author": "codenameryuu",
   "license": "MIT",
   "homepage": "https://github.com/codenameryuu/adonis-lucid-soft-deletes#readme",
@@ -31,13 +31,13 @@
     "precompile": "npm run lint && npm run clean",
     "compile": "tsup-node && tsc --emitDeclarationOnly --declaration",
     "build": "npm run compile",
-    "quick:test": "NODE_DEBUG=\"adonis-lucid-soft-deletes\" node --enable-source-maps --loader=ts-node/esm bin/test.ts",
     "pretest": "npm run lint",
     "test": "c8 npm run quick:test",
     "typecheck": "tsc --noEmit",
     "version": "npm run build",
     "prepublishOnly": "npm run build",
-    "release": "np"
+    "release": "np",
+    "quick:test": "NODE_DEBUG=\"adonis-lucid-soft-deletes\" node --enable-source-maps --loader=ts-node/esm bin/test.ts"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^7.7.0",
