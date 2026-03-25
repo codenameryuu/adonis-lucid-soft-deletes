@@ -1,11 +1,17 @@
 {
   "name": "@codenameryuu/adonis-lucid-soft-deletes",
   "description": "Addon for soft deletes Adonis JS 7 Lucid ORM",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "author": "codenameryuu",
+  "license": "MIT",
+  "homepage": "https://github.com/codenameryuu/adonis-lucid-soft-deletes#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codenameryuu/adonis-lucid-soft-deletes.git"
+  },
   "engines": {
     "node": ">=24.0.0"
   },
-  "main": "./build/index.js",
   "type": "module",
   "files": [
     "build",
@@ -68,16 +74,6 @@
     "@adonisjs/core": "^7.0.0",
     "@adonisjs/lucid": "^22.0.0"
   },
-  "author": "LookinGit",
-  "license": "MIT",
-  "homepage": "https://github.com/lookinlab/adonis-lucid-soft-deletes#readme",
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/lookinlab/adonis-lucid-soft-deletes.git"
-  },
-  "bugs": {
-    "url": "https://github.com/lookinlab/adonis-lucid-soft-deletes/issues"
-  },
   "keywords": [
     "adonisjs",
     "adonisjs-lucid",
@@ -88,20 +84,14 @@
     "adonis-lucid-soft-deletes",
     "adonis-soft-deletes"
   ],
-  "eslintConfig": {
-    "extends": "@adonisjs/eslint-config/package"
-  },
-  "prettier": "@adonisjs/prettier-config",
   "publishConfig": {
     "access": "public",
     "tag": "latest"
   },
-  "np": {
-    "message": "chore(release): %s",
-    "tag": "latest",
-    "branch": "master",
-    "anyBranch": false
+  "eslintConfig": {
+    "extends": "@adonisjs/eslint-config/package"
   },
+  "prettier": "@adonisjs/prettier-config",
   "c8": {
     "reporter": [
       "text",
