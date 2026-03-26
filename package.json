@@ -1,7 +1,7 @@
 {
   "name": "@codenameryuu/adonis-lucid-soft-deletes",
-  "description": "Addon for soft deletes Adonis JS 7 Lucid ORM",
-  "version": "1.5.0",
+  "description": "Addon for soft deletes Adonis JS with Lucid ORM",
+  "version": "1.6.0",
   "author": "codenameryuu",
   "license": "MIT",
   "homepage": "https://github.com/codenameryuu/adonis-lucid-soft-deletes#readme",
@@ -25,15 +25,19 @@
     "./provider": "./build/providers/lucid_soft_deletes_provider.js"
   },
   "scripts": {
-    "clean": "del-cli build",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint . --ext=.ts",
+    "lint": "eslint .",
     "format": "prettier --write .",
-    "prebuild": "npm run lint && npm run clean",
-    "build": "npm run clean && tsc",
-    "release": "release-it",
+    "clean": "del-cli build",
+    "precompile": "npm run lint && npm run clean",
+    "compile": "tsc",
+    "build": "npm run compile",
+    "quick:test": "NODE_DEBUG=\"adonis-lucid-soft-deletes\" node --enable-source-maps --loader=ts-node/esm bin/test.ts",
+    "pretest": "npm run lint",
+    "test": "c8 npm run quick:test",
+    "typecheck": "tsc --noEmit",
     "version": "npm run build",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "release": "np"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^7.7.0",
