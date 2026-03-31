@@ -1,7 +1,7 @@
 {
   "name": "@codenameryuu/adonis-lucid-soft-deletes",
   "description": "Addon for soft deletes Adonis JS with Lucid ORM",
-  "version": "1.6.0",
+  "version": "2.0.0",
   "author": "codenameryuu",
   "license": "MIT",
   "homepage": "https://github.com/codenameryuu/adonis-lucid-soft-deletes#readme",

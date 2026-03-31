@@ -4,24 +4,24 @@ This addon adds the functionality to soft deletes Lucid Models through the `dele
 
 ## Requirement
 
-- Adonis Js 7
-- Lucid 22 or higher
+* Adonis Js 7
+* Lucid 22 or higher
 
 ## Installation
 
-- Install the package
+* Install the package
 
 ```bash
 yarn add @codenameryuu/adonis-lucid-soft-deletes
 ```
 
-- Configure the package
+* Configure the package
 
 ```bash
 node ace configure @codenameryuu/adonis-lucid-soft-deletes
 ```
 
-- Make sure to register the provider inside `adonisrc.ts` file.
+* Make sure to register the provider inside `adonisrc.ts` file.
 
 ```typescript
 providers: [
