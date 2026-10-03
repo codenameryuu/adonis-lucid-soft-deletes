@@ -12,4 +12,10 @@ build
 dist
 shrinkwrap.yaml
 test-helpers/tmp
+
+# Depedencies lock
+package-lock.json
 yarn.lock
+pnpm-lock.yaml
+bun.lock
+bun.lockb
