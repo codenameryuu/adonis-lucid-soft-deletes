@@ -55,7 +55,9 @@ export default class extends BaseSchema {
 import { compose } from '@adonisjs/core/helpers'
 import { SoftDeletes } from '@codenameryuu/adonis-lucid-soft-deletes'
 
-export default class Product extends compose(BaseModel, SoftDeletes) {
+import { ProductSchema } from "#database/schema";
+
+export default class Product extends compose(ProductSchema, SoftDeletes) {
   // ...columns and props
 }
 ```
@@ -105,20 +107,6 @@ export default class ProductsController {
     }
     return product
   }
-}
-```
-
-### Set custom column name for `deletedAt`
-
-```typescript
-import { compose } from '@adonisjs/core/helpers'
-import { SoftDeletes } from '@codenameryuu/adonis-lucid-soft-deletes'
-
-export default class Product extends compose(BaseModel, SoftDeletes) {
-  // ...columns and props
-
-  @column.dateTime({ columnName: 'customDeletedAtColumn' })
-  declare deletedAt: DateTime | null
 }
 ```
 
